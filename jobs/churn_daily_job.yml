@@ -1,0 +1,27 @@
+resources:
+  jobs:
+    churn_daily_job:
+      name: churn_daily_job
+      trigger:
+        pause_status: UNPAUSED
+        periodic:
+          interval: 1
+          unit: DAYS
+      tasks:
+        - task_key: ingest
+          notebook_task:
+            notebook_path: /Workspace/Users/juanjose.almonte@gmail.com/churn-pipeline/ingestion/bronze_ingestion
+            source: WORKSPACE
+          environment_key: Default
+        - task_key: churn_pipeline
+          depends_on:
+            - task_key: ingest
+          pipeline_task:
+            pipeline_id: d71d5507-df60-439a-9cc5-8a4a4b01f284
+      queue:
+        enabled: true
+      environments:
+        - environment_key: Default
+          spec:
+            environment_version: "5"
+      performance_target: PERFORMANCE_OPTIMIZED
