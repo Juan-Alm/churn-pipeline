@@ -1,0 +1,25 @@
+{
+  "id": "d71d5507-df60-439a-9cc5-8a4a4b01f284",
+  "pipeline_type": "WORKSPACE",
+  "name": "churn_pipeline",
+  "libraries": [
+    {
+      "glob": {
+        "include": "/Workspace/Users/juanjose.almonte@gmail.com/churn-pipeline/transformations/bronze_to_silver.py"
+      }
+    },
+    {
+      "glob": {
+        "include": "/Workspace/Users/juanjose.almonte@gmail.com/churn-pipeline/transformations/silver_to_gold.py"
+      }
+    }
+  ],
+  "schema": "silver",
+  "continuous": false,
+  "development": false,
+  "photon": true,
+  "channel": "CURRENT",
+  "catalog": "workspace",
+  "serverless": true,
+  "root_path": "/Workspace/Users/juanjose.almonte@gmail.com/churn_pipeline"
+}
